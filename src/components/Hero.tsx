@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import PixelTV from "./PixelTV";
 import RotatingWord from "./RotatingWord";
+import LedUnderline from "./LedUnderline";
 
 // Real in-store play video, served from the live site
 const PLAY_VIDEO = "https://www.pumparcade.com/assets/images/real-play.mp4";
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
+
 
 // Colors follow the LED floor: blue = step, green = run, red = dodge
 const PLAY_WORDS = [
@@ -125,9 +127,22 @@ export default function Hero() {
             친구랑 뛰어노는 LED 발판게임
           </p>
 
-          <h1 className="type-display text-foreground mb-6" aria-label="요즘 애들 뭐하고 놀아? 밟고, 뛰고, 피하고 놀아!">
+          <h1 className="type-display text-foreground mb-6" aria-label="요즘 애들 뭐하고 놀아? 펌프아케이드에서 밟고, 뛰고, 피하고 놀아!">
             <span aria-hidden>요즘 애들 뭐하고 놀아?</span>
             <br />
+            <span aria-hidden>
+              {/* Brand name: white pixel font with a see-through drop shadow, LED floor tiles underneath */}
+              <span
+                className="relative inline-block font-pixel font-normal text-[40px] md:text-[60px] tracking-normal"
+                style={{ color: "#faf1ef", textShadow: "0 0.07em 0 rgba(250, 241, 239, 0.35)" }}
+              >
+                펌프아케이드
+                <LedUnderline />
+              </span>
+              에서
+            </span>
+            {/* Too long for one line on phones */}
+            <br className="md:hidden" />{" "}
             <RotatingWord words={PLAY_WORDS} /> <span aria-hidden>놀아!</span>
           </h1>
 
