@@ -6,6 +6,7 @@ import { Intro, Benefits, Certifications, Areas, Faq } from "@/components/franch
 import ProcessSteps from "@/components/franchise/ProcessSteps";
 import Combos from "@/components/franchise/Combos";
 import InquiryForm from "@/components/franchise/InquiryForm";
+import MobileCtaBar from "@/components/franchise/MobileCtaBar";
 
 export const metadata: Metadata = {
   title: "창업문의 | PUMP ARCADE 펌프 아케이드",
@@ -28,6 +29,7 @@ export default function FranchisePage() {
       </main>
       <Footer />
       <ScrollReveal />
+      <MobileCtaBar />
     </>
   );
 }

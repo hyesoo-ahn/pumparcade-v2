@@ -40,9 +40,10 @@ export function Intro() {
           <Mark>압도적 소프트웨어</Mark> 선구자
         </SectionHeading>
 
-        <div className="flex flex-wrap justify-center gap-3 mt-8">
+        <div id="intro-cta" className="flex flex-wrap justify-center gap-3 mt-8">
           <a href="#inquiry" className="type-pixel bg-green text-background px-6 py-3.5 hover:brightness-110 transition">
-            창업 상담 신청하기 ↓
+            <span className="sm:hidden">상담 신청 ↓</span>
+            <span className="hidden sm:inline">창업 상담 신청하기 ↓</span>
           </a>
           <a href={`tel:${PHONE}`} className="type-pixel border border-foreground/30 text-foreground px-6 py-3.5 hover:border-green hover:text-green transition-colors">
             <span className="font-toss">☎️</span> {PHONE}
