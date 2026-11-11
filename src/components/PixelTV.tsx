@@ -6,7 +6,7 @@ const BODY = "#faf1ef";
 const SHADOW = "#e01d43";
 
 // Rectangle with 2-step "pixel" corners, u = size of one step
-function stepped(u: number) {
+export function stepped(u: number) {
   const a = `${u}px`;
   const b = `${u * 2}px`;
   const R = (v: string) => `calc(100% - ${v})`;

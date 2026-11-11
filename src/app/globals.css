@@ -1,11 +1,33 @@
 @import url("https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+@import url("https://cdn.jsdelivr.net/gh/toss/tossface@v1.6/dist/tossface.css");
 @import "tailwindcss";
 
 @font-face {
   font-family: "Paperlogy";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2") format("woff2");
   font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2") format("woff2");
+  font-weight: 900;
   font-display: swap;
 }
 
@@ -23,6 +45,7 @@
   --color-blue-deep: #2b6fff;
   --font-pixel: "Galmuri9", monospace;
   --font-display: "Paperlogy", "Pretendard Variable", Pretendard, sans-serif;
+  --font-toss: "Tossface", sans-serif;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
 }
 
@@ -158,6 +181,19 @@ body {
   animation: go-pop 900ms steps(9) both;
 }
 
+@keyframes combo-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  55% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Combo counter bump on the franchise page */
+.combo-pop {
+  display: inline-block;
+  transform-origin: left bottom;
+  animation: combo-pop 450ms steps(6) both;
+}
+
 @keyframes panel-in {
   0% { opacity: 0; transform: translateY(16px); clip-path: inset(0 0 100% 0); }
   100% { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
@@ -169,7 +205,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .panel-in {
+  .panel-in, .combo-pop {
     animation: none;
   }
   .led-tile, .go-pop {

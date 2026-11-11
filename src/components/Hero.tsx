@@ -128,7 +128,7 @@ export default function Hero() {
           </p>
 
           <h1 className="type-display text-foreground mb-6" aria-label="요즘 애들 뭐하고 놀아? 펌프아케이드에서 밟고, 뛰고, 피하고 놀아!">
-            <span aria-hidden>요즘 애들 뭐하고 놀아?</span>
+            <span aria-hidden className="text-[30px] md:text-[48px]">요즘 애들 뭐하고 놀아?</span>
             <br />
             <span aria-hidden>
               {/* Brand name: white pixel font with a see-through drop shadow, LED floor tiles underneath */}
