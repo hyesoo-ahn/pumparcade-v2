@@ -1,26 +1,225 @@
+@import url("https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* 펌프아케이드 브랜드 팔레트 */
+  --color-background: #0b0a12; /* 눈동자 */
+  --color-surface: #14101f;    /* 외곽선 */
+  --color-foreground: #faf1ef; /* 눈 흰자 / 영문 글자 */
+  --color-green: #65ff1e;      /* 초록 캐릭터 */
+  --color-green-shade: #3ed300;
+  --color-yellow: #fee500;     /* 노랑 캐릭터 */
+  --color-yellow-shade: #fa8541;
+  --color-red: #e01d43;        /* 워드마크 밑줄 */
+  --color-blue: #3aa0ff;       /* 반사광 */
+  --color-blue-deep: #2b6fff;
+  --font-pixel: "Galmuri9", monospace;
+  --font-display: "Paperlogy", "Pretendard Variable", Pretendard, sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: --theme(--color-background);
+  color: --theme(--color-foreground);
+  font-family: --theme(--font-sans);
+}
+
+/* ───────── Typography scale ─────────
+ * 고딕(Pretendard, 기본): heading / title / label / body-lg / body / caption
+ * 디스플레이(Paperlogy): display — 히어로 메인 카피 전용
+ * 픽셀(Galmuri9, 10px 배수): heading-pixel / pixel / pixel-sm
+ *   — 도트가 깨지지 않도록 10px 배수만 사용
+ */
+@utility type-display {
+  font-family: --theme(--font-display);
+  font-size: 40px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  @media (width >= 48rem) {
+    font-size: 64px;
+  }
+}
+
+@utility type-heading {
+  font-family: --theme(--font-sans);
+  font-size: 1.875rem; /* 30px */
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  @media (width >= 48rem) {
+    font-size: 2.5rem; /* 40px */
+  }
+}
+
+@utility type-heading-pixel {
+  font-family: --theme(--font-pixel);
+  font-size: 30px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  @media (width >= 48rem) {
+    font-size: 40px;
+  }
+}
+
+@utility type-title {
+  font-family: --theme(--font-sans);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  @media (width >= 48rem) {
+    font-size: 1.25rem; /* 20px */
+  }
+}
+
+@utility type-label {
+  font-family: --theme(--font-sans);
+  font-size: 1rem; /* 16px */
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@utility type-body-lg {
+  font-family: --theme(--font-sans);
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  @media (width >= 48rem) {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+@utility type-body {
+  font-family: --theme(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  @media (width >= 48rem) {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+@utility type-caption {
+  font-family: --theme(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+}
+
+@utility type-pixel {
+  font-family: --theme(--font-pixel);
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+@utility type-pixel-sm {
+  font-family: --theme(--font-pixel);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* ───────── Game mode: LED 발판 버스트 ───────── */
+@keyframes tile-flash {
+  0% { opacity: 0; transform: scale(0.4); }
+  25% { opacity: 1; transform: scale(1); }
+  60% { opacity: 0.85; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes go-pop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.25); }
+  45% { transform: translate(-50%, -50%) scale(1); }
+  80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+}
+
+.led-tile {
+  opacity: 0;
+  animation: tile-flash 650ms steps(6) both;
+}
+
+.go-pop {
+  animation: go-pop 900ms steps(9) both;
+}
+
+@keyframes panel-in {
+  0% { opacity: 0; transform: translateY(16px); clip-path: inset(0 0 100% 0); }
+  100% { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+}
+
+/* Panel opens just after the LED burst */
+.panel-in {
+  animation: panel-in 420ms steps(7) 380ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-in {
+    animation: none;
+  }
+  .led-tile, .go-pop {
+    display: none;
+  }
+}
+
+
+/* ───────── Scroll reveals (see ScrollReveal.tsx) ─────────
+ * data-reveal         fade up
+ * data-reveal="mask"  line slides up out of a mask (wrap the text in a <span>)
+ * --reveal-delay      stagger
+ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal="mask"] {
+  opacity: 1;
+  transform: none;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+[data-reveal="mask"] > span {
+  display: block;
+  transform: translateY(108%);
+  transition: transform 1s cubic-bezier(0.2, 0.75, 0.15, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="mask"][data-in] > span {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal="mask"] > span {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
