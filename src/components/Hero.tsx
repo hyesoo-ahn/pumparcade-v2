@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import PixelTV from "./PixelTV";
 import RotatingWord from "./RotatingWord";
-import LedUnderline from "./LedUnderline";
 
 // Real in-store play video, served from the live site
 const PLAY_VIDEO = "https://www.pumparcade.com/assets/images/real-play.mp4";
@@ -131,13 +130,12 @@ export default function Hero() {
             <span aria-hidden className="text-[30px] md:text-[48px]">요즘 애들 뭐하고 놀아?</span>
             <br />
             <span aria-hidden>
-              {/* Brand name: white pixel font with a see-through drop shadow, LED floor tiles underneath */}
+              {/* Brand name: Galmuri9 pixel font, white with a see-through drop shadow */}
               <span
-                className="relative inline-block font-pixel font-normal text-[40px] md:text-[60px] tracking-normal"
+                className="font-pixel font-normal text-[40px] md:text-[60px] tracking-normal"
                 style={{ color: "#faf1ef", textShadow: "0 0.07em 0 rgba(250, 241, 239, 0.35)" }}
               >
                 펌프아케이드
-                <LedUnderline />
               </span>
               에서
             </span>
